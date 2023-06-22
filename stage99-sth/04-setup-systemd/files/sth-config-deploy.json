@@ -1,0 +1,13 @@
+{
+    "host": {
+        "id": "mini-pi-1"
+    },
+    "safeOperationLimit": 64,
+    "instanceRequirements": {
+        "freeMem": 128
+    },
+    "telemetry": {
+        "status": true,
+        "environment": "raspberry-pi-sth"
+    }
+}
