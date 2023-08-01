@@ -44,10 +44,10 @@ Once the process is complete, two partitions should appear on your drive - boot 
 
 Go to the scramjet cloud platform panel page and generate a configuration file for self-hosted-hub. Copy its contents and paste it into the file contained in the directory deploy/config/sth-config.json
 
-![1](https://github.com/gzukowski/symulacjaPython/assets/85632612/07b14df4-6b0d-4646-8cc7-f7c36d0067aa)
-![2](https://github.com/gzukowski/symulacjaPython/assets/85632612/738dcc53-c9e8-436d-abff-1b48dbf429e5)
-![3](https://github.com/gzukowski/symulacjaPython/assets/85632612/b00f6a9e-d465-428e-a05b-0346ceaca1c3)
-![4](https://github.com/gzukowski/symulacjaPython/assets/85632612/204ef88b-e121-4c67-bfd8-679f2a66551a)
+![1](./assets/1.1.png)
+![2](./assets/1.2.png)
+![3](./assets/1.3.png)
+![4](./assets/1.4.png)
 
 
 Load the card with the configured image into your device and connect it to the power supply. After a while, a new self-hosted-hub should appear in your panel.
@@ -55,9 +55,9 @@ Load the card with the configured image into your device and connect it to the p
 
 Now to control the hub using the command line, you need to install "cli" and generate the appropriate config, which will allow access to the hub.
 
-![1 1](https://github.com/gzukowski/symulacjaPython/assets/85632612/7b42338e-8f2a-40aa-8341-81f9d3ce1912)
-![2 1](https://github.com/gzukowski/symulacjaPython/assets/85632612/b690c34f-b592-467b-817a-4e21ccdfd2f0)
-![3 1](https://github.com/gzukowski/symulacjaPython/assets/85632612/cfb948d2-2f02-4b8a-811a-c36fa9623a36)
+![1 1](./assets/2.1.png)
+![2 1](./assets/2.2.png)
+![3 1](./assets/2.3.png)
 
 
 
