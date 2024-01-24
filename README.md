@@ -1,13 +1,59 @@
-# pi-gen
+# pi-gen Scramjet Transform Hub Edition
 
-Tool used to create Raspberry Pi OS images, and custom images based on Raspberry Pi OS,
-which was in turn derived from the Raspbian project.
-
-**Note**: Raspberry Pi OS 32 bit images are based primarily on Raspbian, while
-Raspberry Pi OS 64 bit images are based primarily on Debian.
+Tool used to create Raspberry Pi OS images - with [Scramjet Transform Hub](https://github.com/scramjetorg/transform-hub) installed and ready for connection with [Scramjet Cloud Platform](https://scramjet.org/cloud-platform/#meet-the-product)
 
 **Note**: 32 bit images should be built from the `master` branch.
 64 bit images should be built from the `arm64` branch.
+
+## Scramjet Cloud Platform
+
+Scramjet Cloud Platform is a powerful serverless data processing platform that combines a data processing engine with serverless apps and APIs, making it easy to deploy, run, and integrate data across distributed environments.
+
+This repo allows building [Scramjet Transform Hub](https://github.com/scramjetorg/transform-hub) images for Raspberry Pi based on Raspberry PI OS.
+
+### Differences from upstream
+
+* The main difference is that the image has the Transform Hub installed and automatically started with `systemd`.
+* The additional vfat partition holds pre-deployed cloud functions for your Pi and STH configuration
+
+### Scramjet Transform Hub Configuration
+
+For use with the Platform please register at [Scramjet Cloud Platform](https://console.scramjet.cloud) - after completing the setup,
+click on `Add Hub` button in `Space` tab and copy the configuration. You'll need to copy the `platform` key to your config.
+
+Here's a suggested configuration to use with Scramjet (put it on the `DEPLOY` partition in `/conf` directory as `sth-config.json`):
+
+```json
+{
+    "host": {
+        "hostname": "0.0.0.0",
+        "port": 9002,
+        "instancesServerPort": 9003,
+        "id": "pi-sth"
+    },
+    "safeOperationLimit": 64,
+    "instanceRequirements": {
+        "freeMem": 128
+    },
+    "telemetry": {
+        "status": true,
+        "environment": "raspberry-pi-sth"
+    },
+    "description": "My Pi",
+    "tags": [
+        "rpi",
+        "demo"
+    ],
+    "timings": {
+        "instanceLifetimeExtensionDelay": 10000
+    },
+    "platform": {
+        "<copy>": "<json from Scramjet Cloud Platform>"
+    }
+}
+```
+
+Once that's done - start your Raspberry Pi and once it boots, it'll automatically connect to the platform. Now you can start your long running lambda functions from the panel or the CLI, wherver you are.
 
 ## Dependencies
 
@@ -52,6 +98,28 @@ your build.
 Upon execution, `build.sh` will source the file `config` in the current
 working directory.  This bash shell fragment is intended to set needed
 environment variables.
+
+You can use your own configs with the command line switch 
+`sudo ./build.sh -c config.path.secret`. If the suffix is `.secret` 
+it'll be ignored by git, via .gitignore.
+
+A sample config is as follows:
+
+```bash
+. config
+
+IMG_NAME="${IMG_NAME}-sample"
+
+TARGET_HOSTNAME=sth-pi
+FIRST_USER_NAME=pi
+ENABLE_SSH=1
+# PUBKEY_SSH_FIRST_USER="<your ssh key>"
+PUBKEY_ONLY_SSH=1
+
+WPA_ESSID="<ESSID>"
+WPA_PASSWORD="<password>"
+WPA_COUNTRY=PL
+```
 
 The following environment variables are supported:
 
