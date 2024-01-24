@@ -98,8 +98,8 @@ rsync -aHAXx --exclude /var/cache/apt/archives --exclude /boot/firmware --exclud
 rsync -rtx "${EXPORT_ROOTFS_DIR}/boot/firmware/" "${ROOTFS_DIR}/boot/firmware/"
 
 if [[ -d "${EXPORT_ROOTFS_DIR}/srv/sth" ]]; then
-	mkdir "${ROOTFS_DIR}/srv" 
-	mkdir "${ROOTFS_DIR}/opt/sth/deploy"
+	mkdir -p "${ROOTFS_DIR}/srv" 
+	mkdir -p "${ROOTFS_DIR}/opt/sth/deploy"
 
 	mount -v "$WORK_DEV" "${ROOTFS_DIR}/srv" -t ext4
 	mount -v "$DEPLOY_DEV" "${ROOTFS_DIR}/opt/sth/deploy" -t vfat
