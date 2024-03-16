@@ -1,14 +1,14 @@
 #!/bin/bash
 
-install -d "${ROOTFS_DIR}/srv/sth"
-install -d "${ROOTFS_DIR}/var/log/sth"
-install -d "${ROOTFS_DIR}/opt/sth/deploy"
-install -d "${ROOTFS_DIR}/opt/sth/deploy/conf"
-install -d "${ROOTFS_DIR}/opt/sth/deploy/sequences"
+install -d -m 755 "${ROOTFS_DIR}/srv/sth"
+install -d -m 755 "${ROOTFS_DIR}/var/log/sth"
+install -d -m 755 "${ROOTFS_DIR}/opt/sth/deploy"
+install -d -m 755 "${ROOTFS_DIR}/opt/sth/deploy/conf"
+install -d -m 755 "${ROOTFS_DIR}/opt/sth/deploy/sequences"
 
 install -m 755 files/start-sth               "${ROOTFS_DIR}/usr/bin/start-sth"
-install -d                                   "${ROOTFS_DIR}/etc/sth"
-install -d                                   "${ROOTFS_DIR}/etc/sth/sequences"
+install -d -m 755                            "${ROOTFS_DIR}/etc/sth"
+install -d -m 755                            "${ROOTFS_DIR}/etc/sth/sequences"
 install -m 644 files/sth-config              "${ROOTFS_DIR}/etc/sth/"
 install -m 644 files/sth.service             "${ROOTFS_DIR}/etc/systemd/system/"
 install -m 644 files/sth-config-deploy.json  "${ROOTFS_DIR}/opt/sth/deploy/conf/sth-config.json"
