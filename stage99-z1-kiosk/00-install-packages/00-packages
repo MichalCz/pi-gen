@@ -1,0 +1,10 @@
+xserver-xorg xinit x11-xserver-utils    
+chromium-browser matchbox-window-manager xautomation unclutter 
+fonts-noto-color-emoji
+gstreamer1.0-x gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-alsa gstreamer1.0-libav
+git
+chromium-browser rpi-chromium-mods libwidevinecdm0
+gldriver-test
+fonts-droid-fallback
+fonts-liberation2
+vulkan-tools mesa-vulkan-drivers
