@@ -1,0 +1,10 @@
+--- stage99-sth/rootfs/home/pi/.profile	2024-03-17 17:13:35.987742332 +0000
++++ stage99-z1-kiosk/rootfs/home/pi/.profile	2024-03-17 18:09:27.076906061 +0000
+@@ -25,3 +25,7 @@
+ if [ -d "$HOME/.local/bin" ] ; then
+     PATH="$HOME/.local/bin:$PATH"
+ fi
++
++if [ "$(tty)" == "/dev/tty1" ]; then
++        xinit /home/pi/bin/kiosk -- vt$(fgconsole);
++fi

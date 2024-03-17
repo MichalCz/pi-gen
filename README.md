@@ -472,6 +472,14 @@ follows:
  * Once you're happy with the image you can remove the SKIP_IMAGES files and
    export your image to test
 
+# Writing to SD card
+
+Replace `${your_image}` and `${card_dev}` with your correct names and run.
+
+```bash
+sudo dd if=deploy/${your_image}.img of=/dev/sd${card_dev} status=progress bs=4M
+```
+
 # Troubleshooting
 
 ## `64 Bit Systems`

@@ -2,9 +2,8 @@
 
 NODE_VERSION=18
 
-echo "Installing node.js $NODE_VERSION"
+echo "Configure nodesource for version v$NODE_VERSION.x"
 
 on_chroot << EOF
     curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash -
-    apt-get install -y nodejs jq python3-venv python3-pip python-is-python3
 EOF

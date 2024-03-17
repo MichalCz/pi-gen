@@ -9,3 +9,4 @@ SKIP_IMAGES
 
 apt-cacher-ng/
 *.secret
+sth-config.json

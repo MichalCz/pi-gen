@@ -103,6 +103,6 @@ if [[ -d "${EXPORT_ROOTFS_DIR}/srv/sth" ]]; then
 
 	mount -v "$WORK_DEV" "${ROOTFS_DIR}/srv" -t ext4
 	mount -v "$DEPLOY_DEV" "${ROOTFS_DIR}/opt/sth/deploy" -t vfat
-	rsync -artx "${EXPORT_ROOTFS_DIR}/srv/" "${ROOTFS_DIR}/srv"
-	rsync -rtx "${EXPORT_ROOTFS_DIR}/opt/sth/deploy/" "${ROOTFS_DIR}/opt/sth/deploy"
+	rsync -artx "${EXPORT_ROOTFS_DIR}/srv/" "${ROOTFS_DIR}/srv/"
+	rsync -rtx "${EXPORT_ROOTFS_DIR}/opt/sth/deploy/" "${ROOTFS_DIR}/opt/sth/deploy/"
 fi

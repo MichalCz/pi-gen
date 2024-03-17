@@ -13,6 +13,10 @@ install -m 644 files/sth-config              "${ROOTFS_DIR}/etc/sth/"
 install -m 644 files/sth.service             "${ROOTFS_DIR}/etc/systemd/system/"
 install -m 644 files/sth-config-deploy.json  "${ROOTFS_DIR}/opt/sth/deploy/conf/sth-config.json"
 
+if [[ -n "$BASE_DIR/$STH_CONFIG_FILE" && -f "$BASE_DIR/$STH_CONFIG_FILE" ]]; then
+    install -v -m 644 $BASE_DIR/$STH_CONFIG_FILE "${ROOTFS_DIR}/opt/sth/deploy/conf/sth-config.json"
+fi
+
 on_chroot << EOF
 chown -R sth:sth /usr/lib/sth
 chown -R sth:sth /srv/sth
