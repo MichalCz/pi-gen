@@ -41,12 +41,14 @@
             fetch('http://localhost:9080/api/url')
                 .then(response => response.json())
                 .then(data => {
+                    document.querySelector(".message").innerHTML = `Redirecting to "${data.url}"...`
+
                     // Redirect to the URL in the response
                     window.location.href = data.url;
                 })
                 .catch(error => {
                     // Refresh the page every 10 attempts
-                    if (attempts % 10 === 0) {
+                    if (attempts++ > 10 === 0) {
                         window.location.reload();
                     }
                     setTimeout(checkApiUrl, 1000); // Retry after 1 second timeout
