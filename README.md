@@ -9,7 +9,25 @@ Tool used to create Raspberry Pi OS images - with [Scramjet Transform Hub](https
 
 Scramjet Cloud Platform is a powerful serverless data processing platform that combines a data processing engine with serverless apps and APIs, making it easy to deploy, run, and integrate data across distributed environments.
 
-This repo allows building [Scramjet Transform Hub](https://github.com/scramjetorg/transform-hub) images for Raspberry Pi based on Raspberry PI OS.
+## Images and usage
+
+This repo allows building [Scramjet Transform Hub](https://github.com/scramjetorg/transform-hub) images for Raspberry Pi based on Raspberry PI OS with STH working as a service, and an optional kiosk mode browser.
+
+### STH Image
+
+The process builds a Raspberry Pi OS image with the `-sth` suffix with STH installed as a service. If the platform config is provided or deployed to the SD card in the Deploy volume, it will be used to connect to [Scramjet Cloud Platform](https://scramjet.org/cloud-platform/).
+
+With this you can then deploy your programs remotely via the platform panel or the `si` command from `@scramjet/cli`.
+
+### Kiosk Image
+
+The process builds a Raspberry Pi OS image with the `-sth-kiosk` suffix with STH installed as a service and a kiosk mode browser with autostart. The browser waits until an API appears on `//localhost:9080/api/url` and redirects to the URL in the JSON response, for instance:
+
+```json
+{"url": "http://localhost:9080/index.html"}
+```
+
+Such an API and website can be deployed in a Scramjet Sequence - [see an example of a basic www server for a kiosk browser on a Raspberry Pi here](https://github.com/scramjetorg/raspberry-pi-dash-cf/tree/main/raspberry-pi/ser-seq).
 
 ### Differences from upstream
 
